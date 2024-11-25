@@ -180,63 +180,203 @@ document.addEventListener("DOMContentLoaded", function() {
 
     //DAQUI PRA BAIXO SÓ PRA TRÁS
 
-    document.getElementById("formCadReserva").addEventListener("submit", function (event) {
-        event.preventDefault(); // Impede o comportamento padrão de envio do formulário
-    
-        const isManutencao = document.querySelector('input[name="verifManutencao"]:checked').value === "true";
-    
-        // Dados básicos do formulário
-        const data = {
-            manutencao: isManutencao,
-            horario: document.getElementById("horario").value,
-            dataReserva: document.getElementById("dataReserva").value,
-        };
-    
-        // Campos adicionais dependendo do tipo de reserva
-        if (isManutencao) {
-            data.local = document.querySelector('input[name="radioLocal"]:checked').id.replace("radio", "").toLowerCase();
-            if (data.local === "sala") {
-                data.sala = document.getElementById("salaOpcao").value;
-            } else if (data.local === "lab") {
-                data.lab = document.getElementById("labOpcao").value;
-            } else if (data.local === "audi") {
-                data.auditorio = document.getElementById("audiOpcao").value;
+
+
+    const formCadReserva = document.getElementById('formCadReserva');
+
+        //PEGAR MANUTENCAO 
+
+        function obterManutencao() {
+            const radioSim = document.getElementById('radioSim');
+            const radioNao = document.getElementById('radioNao');
+            if (radioSim.checked) {
+                return true;
             }
-        } else {
-            data.turma = document.getElementById("turma").value;
-            data.local = document.querySelector('input[name="radioLocal"]:checked').id.replace("radio", "").toLowerCase();
-            if (data.local === "sala") {
-                data.sala = document.getElementById("salaOpcaoNao").value;
-            } else if (data.local === "lab") {
-                data.lab = document.getElementById("labOpcaoNao").value;
-            } else if (data.local === "audi") {
-                data.auditorio = document.getElementById("audiOpcaoNao").value;
+            if (radioNao.checked) {
+                return false;
             }
         }
-    
-        // Enviar os dados para a API
-        fetch("https://vamosvencer.onrender.com/reservas", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-        })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error("Erro ao enviar os dados. Código de status: " + response.status);
-                }
-                return response.json();
-            })
-            .then((result) => {
-                alert("Reserva salva com sucesso!");
-                window.location.href = "readReserva.html"; // Redireciona para outra página após o sucesso
-            })
-            .catch((error) => {
-                console.error("Erro:", error);
-                alert("Ocorreu um erro ao salvar a reserva. Por favor, tente novamente.");
-            });
-    });
-    
 
+        //PEGAR COD DA SALA
+
+        function obterCodSala() {
+            let codSala = null;
+
+            if (document.getElementById('radioSala').checked) {
+                codSala = document.getElementById('salaOpcao').value;
+            } else if (document.getElementById('radioLab').checked) {
+                codSala = document.getElementById('labOpcao').value;
+            } else if (document.getElementById('radioAudi').checked) {
+                codSala = document.getElementById('audiOpcao').value;
+            }
+
+            return codSala;
+        }
+
+        // PEGAR COD DA TURMA 
+        function obterCodTurma() {
+            let codTurma = null;
+
+            if (document.getElementById('radioSim').checked) {
+                codTurma = document.getElementById('turma').value;
+            }
+
+            return codTurma;
+        }
+        
+        //DADOS PARA AGENDA
+  
+            function criarAgenda() {
+            const horaAgenda = document.getElementById("horario").value.padStart(5, '0');
+            const diaAgenda = document.getElementById('dataReserva').value;
+            console.log(horaAgenda);
+            console.log(diaAgenda);
+            const dataAgenda = {
+                dataAgendada: diaAgenda,
+                hora: horaAgenda
+            };
+            fetch("https://vamosvencer.onrender.com/agendas",{
+                method: "POST",
+                headers:{
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(dataAgenda)
+            })
+            .then(response => {
+                if(response.ok){
+                    return response.json(); //retorna o JSON se receber uma resposta
+                }
+                else{
+                    throw new Error("Erro ao criar agenda");
+                }
+            })
+            .then(data => {
+                const codDaAgenda = data.codAgenda
+                console.log("Agenda criada com sucesso. Código da agenda: ", codDaAgenda);
+                criarAgendaSala(codDaAgenda);
+            //alert("Agenda criada com sucesso!");
+            })
+            .catch(error => {
+                console.error("Erro:", error);
+            //alert("Erro ao cadastrar agenda");
+            });
+        }
+
+
+        //DADOS PARA AGENDASALA
+        
+        function criarAgendaSala(codDaAgenda) {
+            const codDaSala = obterCodSala();
+            const statusSala = "Reservado";
+            console.log(codDaSala);
+            console.log(codDaAgenda);
+
+            if (!codDaSala) {
+                alert("Selecione uma sala, laboratório ou auditório.");
+                return;
+            }
+
+            const sala = { codSala: codDaSala }; 
+            const agenda = { codAgenda: codDaAgenda };
+
+            const dataAgendaSala = {
+                sala: sala,
+                agenda: agenda, 
+                status: statusSala
+            };
+
+            fetch("https://vamosvencer.onrender.com/agendasalas", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(dataAgendaSala)
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json(); 
+                } else {
+                    console.error("Erro do servidor:", text)
+                    throw new Error("Erro ao criar relação agenda-sala");
+                }
+            })
+            .then(data => {
+                const codDaAgendaSala = data.codAgendaSala;
+                console.log("Relação agenda-sala criada com sucesso:", data);
+                criarReserva(codDaAgendaSala);
+                //alert("Relação agenda-sala criada com sucesso!");
+            })
+            .catch(error => {
+                console.error("Erro:", error);
+            //alert("Erro ao criar relação agenda-sala");
+            });
+        } 
+
+
+            //DADOS PARA RESERVA
+
+            function criarReserva(codDaAgendaSala) {
+                const manutencaoVerif = obterManutencao();
+                console.log(manutencaoVerif);
+                const codFunc = 1;
+
+                const codDaTurma = obterCodTurma();
+            
+                console.log(manutencaoVerif);
+                console.log(codDaAgendaSala);
+                console.log(codDaTurma);
+
+                if (manutencaoVerif === null) {
+                    alert("Selecione se é manutenção ou não.");
+                    return;
+                }
+
+                //  DEU ERRO 500 PASSAR DIRETAMENTE AS CHAVES ESTRANGEIRAS PQ APARENTEMENTE O BACK ESPERA UM OBJETO
+                const agendaSala = { codAgendaSala: codDaAgendaSala };  // Criar o objeto AgendaSala
+                const turma = { codTurma: codDaTurma };  // Criar o objeto Turma
+                const codSecretaria = { matriculaSecretaria: codFunc };  // Criar o objeto Secretaria
+
+                const dataReserva = {
+                    agendaSala: agendaSala,  
+                    turma: turma,            
+                    manutencao: manutencaoVerif,
+                    secretaria: codSecretaria   
+                };
+
+                if (!codDaTurma) {
+                    delete dataReserva.turma;
+                }
+
+                console.log(JSON.stringify(dataReserva, null, 2))
+            
+                fetch("https://vamosvencer.onrender.com/reservas", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(dataReserva)
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        console.error("Resposta do servidor:", result);
+                        throw new Error("Erro ao criar reserva");
+                    }
+                })
+                .then(data => {
+                    console.log("Reserva criada com sucesso:", data);
+                    alert("Reserva criada com sucesso!");
+                })
+                .catch(error => {
+                    console.error("Erro ao criar reserva:", error);
+                    alert("Erro ao criar reserva.");
+                });
+            }
+
+
+            formCadReserva.addEventListener('submit', function (event) {
+                event.preventDefault();
+                criarAgenda(); // Inicia o fluxo
+            });
 });
