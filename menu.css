@@ -1,0 +1,89 @@
+body{
+background-color: var(--background);
+}
+
+h1{ /*titulo*/
+    background-color: var(--orange);
+    margin-top:0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /*garante que fique acima de outros elementos*/;
+    font-family: Geneva,sans-serif;
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+.botaoLateral{
+    position:absolute;
+    top: 120px;
+    left: 50px;
+
+}
+
+.botaoSuperior{
+    position:absolute;
+    top:120px;
+    right: 50px;
+    background-color: var(--navy);
+}
+.botaoSuperior:hover{
+    background-color: var(--navyHover);
+}
+
+.botaoInferior{
+    position:absolute;
+    bottom:40px;
+    left: 50px;
+
+}
+
+button{
+    width: 150px; /* Largura fixa do botão */
+    height: 40px; /* Altura fixa do botão */
+
+    display: block; /* Define os botões como elementos de bloco */
+    margin-bottom: 10px; /* Espaçamento inferior entre os botões */
+    background-color: var(--yellow); /* Cor de fundo */
+    color: white; /* Cor do texto */
+    padding: 10px; /* Espaçamento interno */
+    font-size: 20px; /* Tamanho da fonte */
+    border: none; /* Remove a borda padrão */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de clique */
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra: deslocamento X, deslocamento Y, desfoque, cor */
+    transition: box-shadow 0.3s; /* Transição suave para a sombra */
+}
+
+button:hover{
+    background-color: var(--yellowHover);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Aumenta a sombra ao passar o mouse */
+
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.gradeReserva {
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+
+
+:root{
+    --orange: #E87400;
+    --background: #fcfaed;
+    --btnHover: #cc6b0a;
+    --yellow: #E8BD00;
+    --yellowHover: #ffd51b;
+    --grey: #ebe4c1;
+    --navy: #3168AA;
+    --navyHover: #438ae0;
+
+}

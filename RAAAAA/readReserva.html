@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF=8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Grade Horaria</title>
+        <link rel="stylesheet" href="readReserva.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+
+    </head>
+    <body>
+        <h1>Grade de Horarios</h1>
+        <div class="container">
+          <div class="navegacaoContainer">
+            <div class="navegacaoDia">
+                <button class="btnNavegacaoDia" id="btnDiaPrev"">&#60</button>
+                <p class="dataTextoAtivo" id="dataTextoAtivo"></p> <!-- O parágrafo começa vazio pq será inserido dinamicamente através do arquivo js -->
+                <button class="btnNavegacaoDia" id="btnDiaNext">&#62</button>
+            </div>
+            <div class="navegacaoSala">
+              <button class="btnNavegacaoSala" id="btnAnterior">&#60</button>
+              <p class="labTextoAtivo" id="labTextoAtivo">Labs</p>
+              <p class="salaTexto" id="salaTexto">Salas</p>
+              <button class="btnNavegacaoSala"id="btnProximo"">&#62</button>
+            </div>
+          </div>
+            <!-- TABELA DE LABORATÓRIOS -->
+            <div id="tabelaLabsContainer" class="tabelaAtiva">
+
+            </div>
+            <br><br><br>
+            <button class= "btnVoltar" id="btnVoltar">Voltar</button>
+        <button class= "btnPdf" id="btnPdf">Exportar PDF</button>
+        </div>
+        
+
+    </body>
+    
+    <script src="readReserva.js" defer></script>
+
+    
+</html>

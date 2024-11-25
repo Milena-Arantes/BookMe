@@ -1,0 +1,44 @@
+.salaTexto{
+    display: none;
+}
+
+.audiTexto{
+    display: none;
+}
+
+/*LAYOUT DA TABELA*/
+.tabela th {
+    background-color: #ddd;
+}
+
+.tabela td.reservado {
+    background-color: #f88;
+    cursor: pointer;
+}
+
+.tabela td.livre {
+    background-color: #8f8;
+    cursor: pointer;
+}
+
+.ativo {
+    font-weight: bold;
+    display: inline; /* Ou outro estilo que indique visibilidade */
+}
+
+.inativo {
+    display: none; /* Ou estilo equivalente */
+}
+
+.navegacaoSala label {
+    font-size: 16px;
+    margin: 0 5px;
+    opacity: 0.5; /* Indicativo de inatividade */
+    cursor: pointer;
+}
+
+.navegacaoSala label.ativo {
+    font-weight: bold;
+    opacity: 1; /* Totalmente visível */
+}
+

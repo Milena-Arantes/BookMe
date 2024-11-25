@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF=8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cadastrar Reserva</title>
+        <link rel="stylesheet" href="createReserva.css">
+    </head>
+    <body>
+        <h1>Reservar</h1>
+        <form id="formCadReserva">
+           <!-- FLUXO:
+            É MANUTENÇÃO? SIM OU NÃO-->
+            <div class="container">
+                <div class="campos">
+                    <label class="label" for="verifManutencao">É manutenção?</label>
+                    <br>
+                    <label class="label" for="opcaoSim">Sim</label>
+                    <input type="radio" id="radioSim" name="verifManutencao" value="true" required>
+                    <label class="label" for="opcaoNao">Não</label>
+                    <input type="radio" id="radioNao" name="verifManutencao" value="false">
+                    
+                    <!-- SE SIM:
+                        HORARIO -->
+                    <div class="simManutencao" id="simManutencao">
+                        <label class="label" for="horario">Horário</label>
+                        <select id="horario" name="horario" required>
+                            <option value="">Selecione um horário</option>
+                            <option value="7:40">7h40 às 9h20</option>
+                            <option value="9:30">9h30 às 11h10</option>    
+                            <option value="11:20">11h20 às 13h00</option>
+                            <option value="13:00">13h00 às 14h30</option>
+                            <option value="14:30">14h30 às 16h10</option>
+                            <option value="16:20">16h20 às 18h00</option>
+                            <option value="18:00">18h00 às 19h00</option>
+                            <option value="19:00">19h00 às 20h40</option>
+                            <option value="20:50">20h50 às 22h30</option>
+                        </select>
+                        <br>
+                    <!--
+                    DATA-->
+
+                        <label class="label" for="dataReserva">Data</label>
+                        <input type="date" id="dataReserva" name="dataReserva" required>
+                        <br>
+
+                    <!-- LOCAL -->
+
+                        <label class="label" for="local">Local</label>
+                        <br>
+                        <label class="label" for="localSala">Sala</label>
+                        <input type="radio" id="radioSala" name="radioLocal" required>
+                        <label class="label" for="localLab">Laboratório</label>
+                        <input type="radio" id="radioLab" name="radioLocal">
+                        <label class="label" for="localAudi">Auditório</label>
+                        <input type="radio" id="radioAudi" name="radioLocal">
+                    
+
+                    <!--  LOCAL SALA LAB OU AUDI -->
+                    <!-- SALA -->
+                        <div class="salaManutencao" id="salaManutencao">        <!-- CLASSES DIFERENTES PARA PODER MODIFICAR VISIBILIDADE-->
+                            <label class="label" for="sala">Sala</label>
+                            <select id="salaOpcao" name="sala" required>
+                                <option value="">Selecione uma sala</option>
+                            </select>
+                        </div>
+
+                    <!-- LABORATÓRIO -->
+                        <div class="labManutencao" id="labManutencao">
+                            <label class="label" for="lab">Laboratório</label>
+                            <select id="labOpcao" name="lab" required>
+                                <option value="">Selecione um laboratório</option>
+                            </select>
+                        </div>
+
+                     <!-- AUDITÓRIO -->
+                        <div class="audiManutencao" id="audiManutencao">
+                            <label class="label" for="audiManutencao">Auditório</label>
+                            <select id="audiOpcao" name="audiManutencao" required>
+                                <option value="">Selecione um auditório</option>
+                            </select>
+                        </div>
+                        <br>
+                        <input type="submit" name="enviar" value="Salvar" class="btnSalvar">
+                    </div>
+                </div>
+
+                <!-- NÃOOOOO
+
+                SE NÃO:
+                TURMA -->
+                <div class="naoManutencao" id="naoManutencao">
+                    <label class="label" for="turma">Turma</label>
+                    <select id="turma" name="turma" required>
+                        <option value="">Selecione uma turma</option>
+                    </select>
+                    <br>
+                    
+                    <!-- HORÁRIO -->
+                    <label class="label" for="horario">Horário</label>
+                    <select id="horario" name="horario" required>
+                        <option value="">Selecione um horário</option>
+                        <option value="7:40">7h40 às 9h20</option>
+                        <option value="9:30">9h30 às 11h10</option>    
+                        <option value="11:20">11h20 às 13h00</option>
+                        <option value="13:00">13h00 às 14h30</option>
+                        <option value="14:30">14h30 às 16h10</option>
+                        <option value="16:20">16h20 às 18h00</option>
+                        <option value="18:00">18h00 às 19h00</option>
+                        <option value="19:00">19h00 às 20h40</option>
+                        <option value="20:50">20h50 às 22h30</option>
+                    </select>
+                    <br>
+                    <!-- DATA -->
+                    <label class="label" for="dataReserva">Data</label>
+                    <input type="date" id="dataReserva" name="dataReserva" required>
+                    <br>
+
+                    <!-- LOCAL -->
+                    <label class="label" for="local">Local</label>
+                    <br>
+                    <label class="label" for="localSala">Sala</label>
+                    <input type="radio" id="radioSalaNao" name="radioLocal" required>
+                    <label class="label" for="localLab">Laboratório</label>
+                    <input type="radio" id="radioLabNao" name="radioLocal">
+                    <label class="label" for="localAudi">Auditório</label>
+                    <input type="radio" id="radioAudiNao" name="radioLocal">
+                    
+
+                    <!-- LOCAL SALA LAB OU AUDI -->
+                    <!-- SALA -->
+                    <div class="salaNaoManutencao" id="salaNaoManutencao">
+                        <label class="label" for="salaNaoManutencao">Sala</label>
+                        <select id="salaOpcaoNao" name="salaNaoManutencao" required>
+                            <option value="">Selecione uma sala</option>
+                        </select>
+                    </div>
+
+                    <!-- LABORATÓRIO -->
+                     <div class="labNaoManutencao" id="labNaoManutencao">
+                        <label class="label" for="labNaoManutencao">Laboratório</label>
+                        <select id="labOpcaoNao" name="labNaoManutencao" required>
+                            <option value="">Selecione um laboratório</option>
+                        </select>
+                     </div>
+
+                     <!-- AUDITÓRIO -->
+                     <div class="audiNaoManutencao" id="audiNaoManutencao">
+                        <label class="label" for="audiNaoManutencao">Auditório</label>
+                        <select id="audiOpcaoNao" name="audiNaoManutencao" required>
+                            <option value="">Selecione um auditório</option>
+                        </select>
+                     </div>
+                    <br>
+                    <input type="submit" name="enviar" value="Salvar" class="btnSalvar">
+                    </div>
+                </div> <!-- FECHA DIV CLASS CAMPOS-->
+            </div> <!-- FECHA DIV CLASS CONTAINER-->
+        </form>
+        <button class="btnVoltar" id="btnVoltar">Cancelar</button>
+    </body>
+    <script src="createReserva.js"></script>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF=8">
+        <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+        <title>Editar Sala</title>
+        <link rel="stylesheet" href="sala.css">
+    </head>
+    <body>
+        <h1>Editar Sala</h1>
+        <form id="formUpdSala">
+        <div class="container">
+            <div class="campos">
+            <label class="label" for="tipoSala">Tipo da sala</label>
+            <br>
+            <label class="checkbox">Sala de aula
+            <input type="radio" id="radioSala" name="tipoSala" value="Sala de aula" required>
+            </label>
+            <label class="checkbox">Laboratório
+            <input type="radio" id="radioLab" name="tipoSala" value ="Laboratório">
+            </label>
+            <label class="checkbox">Auditório ou Mini
+            <input type="radio" id="radioAud" name="tipoSala" value="Auditório">
+            </label>
+            <br>
+            <label class="label" for="nome-sala">Nome da sala</label>
+            <br>
+            <input type="text" id="nome-sala" name="nome-sala" required>
+            <br>
+            <label class="label" for="descricao">Descrição</label>
+            <br>
+            <input type="text" id="descricao" name="descricao" required>
+            <br>
+            <label class="label" for="capacidade">Capacidade</label>
+            <br>
+            <input type="number" id="capacidade" name="capacidade" required>
+            </div>
+        </div>
+        <input type="submit" name="enviar" value="Salvar" class="btnSalvar" id="submitSala">
+        </form>
+        <button class="voltar" id="btnVoltar">Voltar</button>
+    </body>
+    <script src="updateSala.js"></script>
+</html>

@@ -1,0 +1,149 @@
+:root{
+  --orange: #ff8409;
+  --background: #FFFEF7;
+  --btnHover: #ce6700;
+  --greyHover: #e7e5e0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin-top: 80px;
+}
+
+h1 {
+  background-color: var(--orange);
+  margin-top: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  font-family: Geneva, sans-serif;
+  padding: 20px;
+  color: white;
+  text-align: center;
+}
+
+.container {
+  text-align: center;
+  margin: 20px;
+  position: relative;
+}
+
+.navegacaoContainer{
+  margin-top: 8%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; 
+  padding: 10px; 
+}
+
+.navegacaoSala, .navegacaoDia {
+  position: absolute;
+  display: flex;
+  align-items: center;
+}
+
+.navegacaoDia {
+  left: 19px;
+  gap: 15px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.navegacaoSala {
+  right: 21px;
+  gap: 15px;
+  
+
+}
+
+.btnNavegacaoSala, .btnNavegacaoDia {
+  background-color: white;
+  color: black;
+  border: 4px solid black;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+button {
+  cursor: pointer;
+}
+
+table {
+  position: relative;
+  top: 20px;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0;
+  font-size: 18px;
+  text-align: center;
+  table-layout: fixed;
+}
+
+table thead tr {
+  background-color: var(--greyHover);
+  color: black;
+  text-align: center;
+}
+
+table th, table td {
+  border: 1px solid black;
+  padding: 0px 5px;
+  font-weight: bold;
+}
+
+table tbody tr:nth-of-type(even) {
+  background-color: #f2f2f2;
+}
+
+table tbody tr:hover {
+  background-color: #e9e9e9;
+}
+
+.tabela {
+  display: none;
+}
+
+.btnVoltar, .btnPdf {
+  position: relative;
+  margin: 20px 0;
+  width: 200px;
+  padding: 10px 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+}
+
+button {
+  cursor: pointer;
+  background-color: var(--orange);
+  font-weight: bold;
+  color: white;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+}
+
+.btnPdf:hover, .btnVoltar:hover{
+  background-color: var(--btnHover);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.salaTexto{
+  display:none;
+  font-size: 30px;
+}
+.labTextoAtivo{
+  font-size:30px;
+  font-weight: bold;
+}
+button:focus {
+  outline: none;
+}

@@ -1,0 +1,36 @@
+const btnVoltar = document.getElementById('btnVoltar');
+btnVoltar.addEventListener('click', function(){
+    window.location.href = "../Curso/readCurso.html";
+});
+
+//EDIÇÃO
+document.addEventListener("DOMContentLoaded", function() { //apenas quando todo o conteúdo do site estiver carregado
+        
+    const urlParams = new URLSearchParams(window.location.search)
+    const codCurso = parseInt(urlParams.get('id'));
+
+    async function buscarNomeCurso(id){
+        try{
+            const response = fetch(`https://vamosvencer.onrender.com/cursos/${id}`);
+            if(!response.ok){
+                throw new Error('Erro ao buscar o curso');
+            }
+            const curso = (await response).json();
+            return curso.nomeCurso;
+        }
+        catch(error){
+            console.error('Erro: ', error);
+            return null;
+        }
+    }
+    async function carregarNomeCurso(){
+        if(!codCurso){
+            const h1=document.createElement('h1');
+            h1.textContet = `${nomeCurso}`;
+            document.body.prepend(h1); //PARA INSERIR NO TOPO DA PÁGINA
+        }
+        else{
+            console.error('Não foi possível carregar o nome do curso');
+        }
+    }
+});

@@ -1,0 +1,38 @@
+.simManutencao{
+    display: none; /* Inicialmente escondido */
+}
+
+.naoManutencao{
+    display: none;
+}
+
+/*SE MANUTENCAO == TRUE*/
+
+.salaManutencao{
+    display: none;
+}
+
+.labManutencao{
+    display: none;
+}
+
+.audiManutencao{
+    display: none;
+}	
+
+/*SE MANUTENCAO == FALSE*/
+
+
+.salaNaoManutencao{
+    display: none;
+}
+
+.labNaoManutencao{
+    display: none;
+}
+
+.audiNaoManutencao{
+    display: none;
+}	
+
+

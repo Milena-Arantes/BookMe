@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF=8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Grade Horaria</title>
+        <link rel="stylesheet" href="readReserva.css">
+    </head>
+    <body>
+        <h1>Grade de Horários</h1>
+        <div class="container">
+            <div class="navegacaoContainer">
+                <div class="navegacaoDia">
+                    <button class="btnNavegacaoDia" id="btnDiaPrev"><</button>
+                    <label class="dataTextoAtivo" id="dataTextoAtivo"></label> <!-- COMEÇA VAZIO PORQUE SERÁ ADICIONADO NO ARQUIVO JS-->
+                    <button class="btnNavegacaoDia" id="btnDiaNext">></button>
+                </div>
+                <div class="navegacaoSala">
+                    <button class="btnNavegacaoSala" id="btnPrev"><</button>
+                    <label class="labTextoAtivo" id="labTextoAtivo">Labs</label>
+                    <label class="salaTexto" id="salaTexto">Salas</label>  <!-- ALTERAR VISIBILIDADE -->
+                    <label class="audiTexto" id="audiTexto">Auditórios</label> <!-- ALTERAR VISIBILIDADE -->
+                    <button class="btnNavegacaoSala" id="btnNext">></button>
+                </div>
+                <button class="btnExcluir" id="btnExcluir">Excluir</button>
+
+                <!-- TABELA DE LABORATÓRIOS -->
+                <div id="tabelaLabsContainer" class="tabelaAtiva">
+                    <!-- INSERIR DINAMICAMENTE PELO JS -->
+                    <table id="tabelaReservas">
+                        <thead>
+                          <tr>
+                            <th>Horários</th>
+                            <!-- Mais colunas dinâmicas -->
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <!-- Linhas dinâmicas -->
+                        </tbody>
+                      </table>
+                </div>
+                <br><br>
+                <button class="btnVoltar" id="btnVoltar">Cancelar</button>
+                <button class="btnPdf" id="btnPdf">Exportar PDF</button>
+            </div>
+        </div>
+    </body>
+    <script src="readReserva.js"></script>
+</html>
