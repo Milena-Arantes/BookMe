@@ -13,13 +13,14 @@
             É MANUTENÇÃO? SIM OU NÃO-->
             <div class="container">
                 <div class="campos">
+                <div class="radio-group">
                     <label class="label" for="verifManutencao">É manutenção?</label>
                     <br>
                     <label class="label" for="opcaoSim">Sim</label>
                     <input type="radio" id="radioSim" name="verifManutencao" value="true" >
                     <label class="label" for="opcaoNao">Não</label>
                     <input type="radio" id="radioNao" name="verifManutencao" value="false">
-                    
+                </div>
                     <!-- SE SIM:
                         HORARIO -->
                     <div class="simManutencao" id="simManutencao">
@@ -82,6 +83,7 @@
                         </div>
                         <br>
                         <input type="submit" name="enviar" value="Salvar" class="btnSalvar">
+                        <button class="btnVoltar" id="btnVoltar">Cancelar</button>
                     </div>
                 </div>
 
@@ -153,11 +155,11 @@
                      </div>
                     <br>
                     <input type="submit" name="enviar" value="Salvar" class="btnSalvar">
+                    <button class="btnVoltar" id="btnVoltarNao">Cancelar</button>
                     </div>
                 </div> <!-- FECHA DIV CLASS CAMPOS-->
             </div> <!-- FECHA DIV CLASS CONTAINER-->
         </form>
-        <button class="btnVoltar" id="btnVoltar">Cancelar</button>
     </body>
     <script src="createReserva.js"></script>
 </html>

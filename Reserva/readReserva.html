@@ -16,28 +16,27 @@
                     <button class="btnNavegacaoDia" id="btnDiaNext">></button>
                 </div>
                 <div class="navegacaoSala">
-                    <button class="btnNavegacaoSala" id="btnPrev"><</button>
-                    <label class="labTextoAtivo" id="labTextoAtivo">Labs</label>
-                    <label class="salaTexto" id="salaTexto">Salas</label>  <!-- ALTERAR VISIBILIDADE -->
-                    <label class="audiTexto" id="audiTexto">Auditórios</label> <!-- ALTERAR VISIBILIDADE -->
-                    <button class="btnNavegacaoSala" id="btnNext">></button>
+
+                    <button class="btnNavegacaoSala" id="btnSalas">Salas</button>
+                    <button class="btnNavegacaoSala" id="btnLabs">Labs</button>
+                    <button class="btnNavegacaoSala" id="btnAudis">Auditórios</button>
                 </div>
-                <button class="btnExcluir" id="btnExcluir">Excluir</button>
+                <button class="btnExcluir" id="btnExcluir" disabled>Excluir</button>
 
                 <!-- TABELA DE LABORATÓRIOS -->
-                <div id="tabelaLabsContainer" class="tabelaAtiva">
+                <div id="tabelaContainer" class="tabelaAtiva">
                     <!-- INSERIR DINAMICAMENTE PELO JS -->
-                    <table id="tabelaReservas">
+                    <!--<table id="tabelaReservas">
                         <thead>
                           <tr>
                             <th>Horários</th>
-                            <!-- Mais colunas dinâmicas -->
+                            <!-- Mais colunas dinâmicas 
                           </tr>
                         </thead>
                         <tbody>
-                          <!-- Linhas dinâmicas -->
+                          <!-- Linhas dinâmicas 
                         </tbody>
-                      </table>
+                      </table> -->
                 </div>
                 <br><br>
                 <button class="btnVoltar" id="btnVoltar">Cancelar</button>

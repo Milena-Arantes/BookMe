@@ -11,6 +11,19 @@ btnVoltar.addEventListener('click', function(){
     }
 });
 
+const btnVoltarNao = document.getElementById('btnVoltarNao');
+btnVoltarNao.addEventListener('click', function(){
+    const confirmarCancelamento = confirm("Tem certeza de que deseja cancelar sua reserva?");
+    
+    if (confirmarCancelamento) {
+        // Se o usuário clicar em "OK"
+        window.location.href = "readReserva.html";
+    } else {
+        // Se o usuário clicar em "Cancelar"
+        // Nenhuma ação é necessária, o usuário permanece na mesma página.
+    }
+});
+
 document.addEventListener("DOMContentLoaded", function() {
 
     //VISIBILIDADE DOS CAMPOS DE MANUTENCAO OU NAO MANUTENCAO
@@ -391,6 +404,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 .then(data => {
                     console.log("Reserva criada com sucesso:", data);
                     alert("Reserva criada com sucesso!");
+                    window.location.href = "readReserva.html";
+
                 })
                 .catch(error => {
                     console.error("Erro ao criar reserva:", error);
@@ -436,12 +451,14 @@ document.addEventListener("DOMContentLoaded", function() {
                 .then(data => {
                     console.log("Reserva criada com sucesso:", data);
                     alert("Reserva criada com sucesso!");
+                    window.location.href = "readReserva.html";
                 })
                 .catch(error => {
                     console.error("Erro ao criar reserva:", error);
                     alert("Erro ao criar reserva.");
                 });
             }
+
 
     formCadReserva.addEventListener('submit', function (event) {
         event.preventDefault();

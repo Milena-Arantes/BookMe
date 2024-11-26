@@ -36,3 +36,137 @@
 }	
 
 
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FFFBEA;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .radio-group {
+    width: 500px;
+    margin: 20px auto;
+    padding: 15px;
+    background-color: #FFF;
+    border: 2px solid #FFA500;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .radio-group label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .radio-group input {
+    margin: 0 10px;
+  }
+  
+
+
+  #naoManutencao {
+    width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #FFF;
+    border: 2px solid #FFA500;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  #simManutencao {
+    width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #FFF;
+    border: 2px solid #FFA500;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: inline-block;
+  }
+  
+  select,
+  input[type="date"],
+  input[type="radio"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+  
+  input[type="radio"] {
+    width: auto;
+    margin-right: 10px;
+  }
+  
+  input[type="submit"] {
+    width: 100px;
+    padding: 10px 20px;
+    background-color: #FFA500;
+    color: #FFF;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #e69500;
+  }
+
+  .btnVoltar {
+    width: 100px;
+    padding: 10px 20px;
+    background-color: #FFA500;
+    color: #FFF;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .btnVoltar:hover {
+    background-color: #e69500;
+  }
+  
+  .btnSalvar {
+    display: inline-block;
+    margin: 0 10px;
+  }
+  .btnVoltar {
+    display: inline-block;
+    margin: 0 10px;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 24px;
+    color: #FFF;
+    background-color: #FFA500;
+    padding: 10px 0;
+    margin: 0;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  
+  .salaNaoManutencao,
+  .labNaoManutencao,
+  .audiNaoManutencao {
+    display: none;
+  }
+  
+
