@@ -197,6 +197,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
 
+
         //PEGAR COD DA SALA
 
         function obterCodSala() {
@@ -213,11 +214,25 @@ document.addEventListener("DOMContentLoaded", function() {
             return codSala;
         }
 
+        function obterCodSalaNao() {
+            let codSala = null;
+        
+            if (document.getElementById('radioSalaNao').checked) {
+                codSala = document.getElementById('salaOpcaoNao').value;
+            } else if (document.getElementById('radioLabNao').checked) {
+                codSala = document.getElementById('labOpcaoNao').value;
+            } else if (document.getElementById('radioAudiNao').checked) {
+                codSala = document.getElementById('audiOpcaoNao').value;
+            }
+        
+            return codSala;
+        }
+
         // PEGAR COD DA TURMA 
         function obterCodTurma() {
             let codTurma = null;
 
-            if (document.getElementById('radioSim').checked) {
+            if (document.getElementById('radioNao').checked) {
                 codTurma = document.getElementById('turma').value;
             }
 
@@ -227,8 +242,11 @@ document.addEventListener("DOMContentLoaded", function() {
         //DADOS PARA AGENDA
   
             function criarAgenda() {
-            const horaAgenda = document.getElementById("horario").value.padStart(5, '0');
-            const diaAgenda = document.getElementById('dataReserva').value;
+            const manutencao = obterManutencao();
+            const horaAgenda = document.getElementById(manutencao ? "horario" : "horarioNao").value.padStart(5, '0');
+            const diaAgenda = document.getElementById(manutencao ? "dataReserva" : "dataReservaNao").value;
+
+
             console.log(horaAgenda);
             console.log(diaAgenda);
             const dataAgenda = {
@@ -261,12 +279,12 @@ document.addEventListener("DOMContentLoaded", function() {
             //alert("Erro ao cadastrar agenda");
             });
         }
-
-
         //DADOS PARA AGENDASALA
         
         function criarAgendaSala(codDaAgenda) {
-            const codDaSala = obterCodSala();
+            const manutencao = obterManutencao();
+            const codDaSala = manutencao ? obterCodSala() : obterCodSalaNao();
+
             const statusSala = "Reservado";
             console.log(codDaSala);
             console.log(codDaAgenda);
@@ -303,7 +321,13 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(data => {
                 const codDaAgendaSala = data.codAgendaSala;
                 console.log("Relação agenda-sala criada com sucesso:", data);
-                criarReserva(codDaAgendaSala);
+
+                if (manutencao) {
+                    criarReserva(codDaAgendaSala);
+                } else {
+                    criarReservaNaoManutencao(codDaAgendaSala);
+                }
+                console.log("Relação agenda-sala criada com sucesso:", data);
                 //alert("Relação agenda-sala criada com sucesso!");
             })
             .catch(error => {
@@ -374,9 +398,54 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
             }
 
+            function criarReservaNaoManutencao(codDaAgenda) {
+                const codDaSala = obterCodSalaNao();
+                const codDaTurma = obterCodTurma();
+                const codFunc = 1;
+            
+                if (!codDaSala) {
+                    alert("Selecione uma sala, laboratório ou auditório.");
+                    return;
+                }
+            
+                const dataReserva = {
+                    agendaSala: { codAgendaSala: codDaAgenda },
+                    turma: { codTurma: codDaTurma },
+                    manutencao: false,
+                    secretaria: { matriculaSecretaria: codFunc }
+                };
+            
+                if (!dataReserva.turma) {
+                    delete dataReserva.turma;
+                }
+            
+                fetch("https://vamosvencer.onrender.com/reservas", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(dataReserva)
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error("Erro ao criar reserva");
+                    }
+                })
+                .then(data => {
+                    console.log("Reserva criada com sucesso:", data);
+                    alert("Reserva criada com sucesso!");
+                })
+                .catch(error => {
+                    console.error("Erro ao criar reserva:", error);
+                    alert("Erro ao criar reserva.");
+                });
+            }
 
-            formCadReserva.addEventListener('submit', function (event) {
-                event.preventDefault();
-                criarAgenda(); // Inicia o fluxo
-            });
+    formCadReserva.addEventListener('submit', function (event) {
+        event.preventDefault();
+        criarAgenda(); // Inicia o fluxo
+    });
 });
+    
