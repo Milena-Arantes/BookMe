@@ -28,3 +28,8 @@ btnTurma.addEventListener('click', function(){
     window.location.href = './Turma/readTurma.html';
 });
 
+const btnTurma = document.getElementById('secretaria');
+btnTurma.addEventListener('click', function(){
+    window.location.href = './Funcionaria/readFuncionaria.html';
+});
+
