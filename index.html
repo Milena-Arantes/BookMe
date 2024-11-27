@@ -1,4 +1,4 @@
-<!doctype html>
+<!--<!doctype html>
 <html lang="pt-br">
     
     <head>
@@ -9,12 +9,12 @@
     </head>
 
     <body>
-        <!--cabeçalho-->
+        <!--cabeçalho
         <h1>
             Login
         </h1>
         
-        <!--Formulário de Login-->
+        <!--Formulário de Login
             
             <div class="campos">
                 <label class="label" for="usuario">Usuário</label>
@@ -24,11 +24,39 @@
             </div>
         <div class="botao">
             <button id="btnEntrar">Entrar</button>
-            <!--<button class="esqueciSenha" id="btnEsqueciSenha">Esqueceu a senha?</button>-->
+            <!--<button class="esqueciSenha" id="btnEsqueciSenha">Esqueceu a senha?</button>
         </div>
     </body>
     
     <script src="login.js"></script>
 
 
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - bookMe</title>
+    <link rel="stylesheet" href="login.css"> <!-- Caso use CSS externo -->
+</head>
+<body>
+    <div class="campos">
+        <h1>Login</h1>
+        <form id="formLogin">
+            <div>
+                <label class=label for="login">Login:</label>
+                <input type="text" id="login" name="login" required>
+            </div>
+            <div>
+                <label class=label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha" required>
+            </div>
+            <button type="submit">Entrar</button>
+        </form>
+        <p id="errorMessage" style="color: red; display: none;">Login ou senha inválidos. Entre em contato com o administrador.</p>
+    </div>
+    <script src="login.js"></script>
+</body>
 </html>
