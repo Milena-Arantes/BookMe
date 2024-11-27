@@ -267,14 +267,14 @@ document.addEventListener("DOMContentLoaded", function () {
           const celula = document.createElement("td");
 
           if (reserva.turma) {
-            // Caso tenha turma, exibe as informações do professor, curso, semestre e disciplina
-            celula.textContent = `${reserva.turma.professor.nomeProfessor} - ${reserva.turma.curriculo.curso.nomeCurso}
-          ${reserva.turma.curriculo.semestreGrade} º - ${reserva.turma.curriculo.disciplina.nomeDisciplina}`;
+            celula.innerHTML = `${reserva.turma.professor.nomeProfessor} - ${reserva.turma.curriculo.curso.nomeCurso}
+          ${reserva.turma.curriculo.semestreGrade} º - ${reserva.turma.curriculo.disciplina.nomeDisciplina}<br>
+          por: ${reserva.secretaria.nomeSecretaria}`;
           celula.style.cursor = "pointer";
           } 
           else {
-            // Se não tiver turma, exibe "Manutenção"
-            celula.textContent = "Manutenção";
+            celula.innerHTML = `Manutenção<br>
+            por: ${reserva.secretaria.nomeSecretaria}`;
             celula.style.cursor = "pointer";
           }
           celula.addEventListener("click", function () {
