@@ -51,6 +51,8 @@ document.getElementById('formLogin').addEventListener('submit', async (event) =>
         );
 
         if (funcionaria) {
+            
+            localStorage.setItem('matriculaSecretaria', funcionaria.matriculaSecretaria);
 
             alert(`Bem-vinda, ${funcionaria.nomeSecretaria}!`);
             window.location.href = 'menu.html';
@@ -63,4 +65,5 @@ document.getElementById('formLogin').addEventListener('submit', async (event) =>
         alert('Ocorreu um erro, tente novamente mais tarde.');
     }
 });
+
 

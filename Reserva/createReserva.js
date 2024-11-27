@@ -389,7 +389,7 @@ document.addEventListener("DOMContentLoaded", function() {
         function criarReserva(codDaAgendaSala) {
                 const manutencaoVerif = obterManutencao();
                 console.log(manutencaoVerif);
-                const codFunc = 1;
+                const codFunc = localStorage.getItem('matriculaSecretaria');
 
                 const codDaTurma = obterCodTurma();
             
