@@ -5,6 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Grade Horaria</title>
         <link rel="stylesheet" href="readReserva.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+
     </head>
     <body>
         <h1>Grade de Horários</h1>
@@ -25,22 +27,13 @@
 
                 <!-- TABELA DE LABORATÓRIOS -->
                 <div id="tabelaContainer" class="tabelaAtiva">
-                    <!-- INSERIR DINAMICAMENTE PELO JS -->
-                    <!--<table id="tabelaReservas">
-                        <thead>
-                          <tr>
-                            <th>Horários</th>
-                            <!-- Mais colunas dinâmicas 
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <!-- Linhas dinâmicas 
-                        </tbody>
-                      </table> -->
+                   
                 </div>
                 <br><br>
+                <button class="btnCadReserva" id="btnCadReserva">Cadastrar Reserva</button>
                 <button class="btnVoltar" id="btnVoltar">Cancelar</button>
                 <button class="btnPdf" id="btnPdf">Exportar PDF</button>
+               
             </div>
         </div>
     </body>

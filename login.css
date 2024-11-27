@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root{
+    --orange: #E87400;
+    --background: #f8f3eb;
+    --btnHover: #ff8409;
+    --greyHover: #e7e5e0;
+    --lightBlue: #31bbe6;
+    --lightBlueHover: #049dcc;
+    --red: #c50000;
+    --redHover: #9b0000;
+
+}
+
+h1{ /*titulo*/
+    background-color: var(--orange);
+    margin-top:0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /*garante que fique acima de outros elementos*/;
+    font-family: Geneva,sans-serif;
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+/* Definição de estilo geral */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FFFBEF; /* Fundo em tom claro */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+/* Estilização dos campos de entrada */
+.campos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    width: 300px;
+}
+
+.label {
+    font-size: 16px;
+    color: #000;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Estilizando o botão */
+.botao {
+    text-align: right;
+    margin-top: 250px;
+
+}
+
+#btnEntrar {
+    background-color: #F57C00; /* Laranja */
+    width: 100%;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#btnEntrar:hover {
+    background-color: #E65100; /* Tom mais escuro no hover */
+}
+
+

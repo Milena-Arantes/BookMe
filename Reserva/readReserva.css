@@ -105,7 +105,7 @@
   }
   
   /* Botões */
-  button.btnVoltar, button.btnPdf {
+  button.btnVoltar, button.btnPdf, button.btnCadReserva {
     background-color: #ff7f00;
     color: white;
     border: none;
@@ -116,9 +116,11 @@
     font-size: 16px;
   }
   
-  button.btnVoltar:hover, button.btnPdf:hover {
+  button.btnVoltar:hover, button.btnPdf:hover, button.btnCadReserva:hover {
     background-color: #e06c00;
   }
+
+  
   
   
   

@@ -26,6 +26,11 @@ btnVoltarNao.addEventListener('click', function(){
 
 document.addEventListener("DOMContentLoaded", function() {
 
+
+    const urlParams = new URLSearchParams(window.location.search)
+    const id = parseInt(urlParams.get('id'));
+
+
     //VISIBILIDADE DOS CAMPOS DE MANUTENCAO OU NAO MANUTENCAO
     function esconderCamposManutencao(){
         const radioSim = document.getElementById('radioSim');
@@ -115,6 +120,8 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('radioAudiNao').addEventListener('change', esconderCamposSalaLaboratorioNaoManutencao);
     esconderCamposSalaLaboratorioNaoManutencao();
 
+
+    
     //MANUTENCAO
     fetch("https://vamosvencer.onrender.com/salas") //api
     .then(response => response.json())
@@ -293,66 +300,93 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
         //DADOS PARA AGENDASALA
-        
+        // Função para verificar duplicidade
+        function verificarDuplicidadeAgendaSala(codSala, dataAgenda) {
+            return fetch("https://vamosvencer.onrender.com/agendasalas")
+                .then(response => response.json())
+                .then(data => {
+                    // Verifica se algum registro já existe com o mesmo codSala, dataAgendada e hora
+                    return data.some(item => 
+                        item.codSala === codSala && 
+                        item.agenda.hora === dataAgenda.hora && 
+                        item.agenda.dataAgendada === dataAgenda.dataAgendada
+                    );
+                })
+                .catch(error => {
+                    console.error("Erro ao verificar duplicidade:", error);
+                    throw new Error("Erro ao verificar duplicidade de relação agenda-sala");
+                });
+        }
+
         function criarAgendaSala(codDaAgenda) {
             const manutencao = obterManutencao();
             const codDaSala = manutencao ? obterCodSala() : obterCodSalaNao();
 
-            const statusSala = "Reservado";
-            console.log(codDaSala);
-            console.log(codDaAgenda);
+            verificarDuplicidadeAgendaSala(codDaAgenda, codDaSala)
+            .then(existe => { 
+                if (existe) {
+                    console.error("Já existe uma relação agenda-sala com esse código de agenda e sala.");
+                    alert("Já existe uma relação agenda-sala com esse código de agenda e sala.");
+                } 
+                else {
+                    const statusSala = "Reservado";
+                    console.log(codDaSala);
+                    console.log(codDaAgenda);
 
-            if (!codDaSala) {
-                alert("Selecione uma sala, laboratório ou auditório.");
-                return;
-            }
+                    if (!codDaSala) {
+                        alert("Selecione uma sala, laboratório ou auditório.");
+                        return;
+                    }
 
-            const sala = { codSala: codDaSala }; 
-            const agenda = { codAgenda: codDaAgenda };
+                    const sala = { codSala: codDaSala }; 
+                    const agenda = { codAgenda: codDaAgenda };
 
-            const dataAgendaSala = {
-                sala: sala,
-                agenda: agenda, 
-                status: statusSala
-            };
+                    const dataAgendaSala = {
+                        sala: sala,
+                        agenda: agenda, 
+                        status: statusSala
+                    };
 
-            fetch("https://vamosvencer.onrender.com/agendasalas", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(dataAgendaSala)
-            })
-            .then(response => {
-                if (response.ok) {
-                    return response.json(); 
-                } else {
-                    console.error("Erro do servidor:", text)
-                    throw new Error("Erro ao criar relação agenda-sala");
+                    fetch("https://vamosvencer.onrender.com/agendasalas", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(dataAgendaSala)
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json(); 
+                        } else {
+                            console.error("Erro do servidor:", text)
+                            throw new Error("Erro ao criar relação agenda-sala");
+                        }
+                    })
+                    .then(data => {
+                        const codDaAgendaSala = data.codAgendaSala;
+                        console.log("Relação agenda-sala criada com sucesso:", data);
+
+                        if (manutencao) {
+                            criarReserva(codDaAgendaSala);
+                        } else {
+                            criarReservaNaoManutencao(codDaAgendaSala);
+                        }
+                        console.log("Relação agenda-sala criada com sucesso:", data);
+                        //alert("Relação agenda-sala criada com sucesso!");
+                    })
+                    .catch(error => {
+                        console.error("Erro:", error);
+                    //alert("Erro ao criar relação agenda-sala");
+                    });
                 }
-            })
-            .then(data => {
-                const codDaAgendaSala = data.codAgendaSala;
-                console.log("Relação agenda-sala criada com sucesso:", data);
-
-                if (manutencao) {
-                    criarReserva(codDaAgendaSala);
-                } else {
-                    criarReservaNaoManutencao(codDaAgendaSala);
-                }
-                console.log("Relação agenda-sala criada com sucesso:", data);
-                //alert("Relação agenda-sala criada com sucesso!");
-            })
-            .catch(error => {
-                console.error("Erro:", error);
-            //alert("Erro ao criar relação agenda-sala");
-            });
-        } 
+                });
+                } 
 
 
+        
             //DADOS PARA RESERVA
 
-            function criarReserva(codDaAgendaSala) {
+        function criarReserva(codDaAgendaSala) {
                 const manutencaoVerif = obterManutencao();
                 console.log(manutencaoVerif);
                 const codFunc = 1;
@@ -385,7 +419,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
 
                 console.log(JSON.stringify(dataReserva, null, 2))
-            
+
                 fetch("https://vamosvencer.onrender.com/reservas", {
                     method: "POST",
                     headers: {
@@ -411,6 +445,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     console.error("Erro ao criar reserva:", error);
                     alert("Erro ao criar reserva.");
                 });
+            
             }
 
             function criarReservaNaoManutencao(codDaAgenda) {

@@ -10,6 +10,12 @@ btnVoltar.addEventListener('click', function(){
     }
 });
 
+//CONFIGURAÇÃO DO BOTÃO CADASTRAR
+
+const btnCadReserva = document.getElementById('btnCadReserva');
+btnCadReserva.addEventListener('click', function(){
+    window.location.href = "createReserva.html";
+});
 
 document.addEventListener("DOMContentLoaded", function () {
   //EXCLUIR
@@ -313,5 +319,37 @@ document.addEventListener("DOMContentLoaded", function () {
     tabela.appendChild(tbody);
     return tabela;
   }
+  document.getElementById('btnPdf').addEventListener('click', function(){
+    exportarPDF();
+});
+
+function exportarPDF(){
+    const tabela = document.getElementById('tabelaContainer');
+    const data = document.getElementById('dataTextoAtivo').innerHTML; // Pega o conteúdo do texto ativo
+    const conteudoParaExportar = document.createElement('div');
+    conteudoParaExportar.innerHTML = `<div>${data}</div>`; // Adiciona o texto ativo
+    conteudoParaExportar.appendChild(tabela.cloneNode(true)); // Adiciona uma cópia da tabela
+
+    const options = {
+        margin: 0.5,
+        filename: 'Grade_de_horários.pdf', // Depois adicionar o curso
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: {scale: 3},
+        jsPDF: {unit: 'in', format: 'a3', orientation: 'landscape'}
+    };
+    html2pdf().set(options).from(conteudoParaExportar).save();
+
+    console.log(conteudoParaExportar);}
+    /*const options = {
+        margin: 0.5,
+        filename: 'Grade_de_horários.pdf', //depois adicionar o curso
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: {scale:3},
+        jsPDF: {unit: 'in', format: 'a3', orientation: 'landscape'}
+    };
+    html2pdf().set(options).from(tabela).save();
+
+    console.log(document.getElementById('tabelaContainer'));
+}*/
 });
 
