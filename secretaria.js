@@ -30,6 +30,7 @@ btnTurma.addEventListener('click', function(){
 
 const btnFuncionaria = document.getElementById('secretaria');
 btnFuncionaria.addEventListener('click', function(){
-    window.location.href = './Funcioanria/readFuncionaria.html';
+    window.location.href = './Funcionaria/readFuncionaria.html';
 });
+
 
