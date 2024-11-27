@@ -66,7 +66,6 @@ document.addEventListener("DOMContentLoaded", function(){
             row.innerHTML = `
             <td>${id}</td>
             <td>${nome}</td>
-            <td><button class="btnTurmas" id="btnTurmas" data-id="${id}">Turmas</button></td>
             <td><button class="btnEditar" data-id="${id}">Editar</button></td>
             <td><button class="btnExcluir" data-id="${id}"><i class="fas fa-trash"></i></button></td>
             `;
@@ -109,8 +108,5 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location.href= `updateProfessor.html?id=${id}`;
     }
 
-    const btnTurmas = document.getElementById('btnTurmas');
-    btnTurmas.addEventListener('click', function(){
-    window.location.href = "./turmas.html";
-});
+
 });

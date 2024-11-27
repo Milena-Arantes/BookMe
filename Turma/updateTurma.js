@@ -1,7 +1,10 @@
-    const btnVoltar = document.getElementById('btnVoltar');
-    btnVoltar.addEventListener('click', function(){
-        window.location.href = "./readTurma.html";
-    });
+const btnVoltar = document.getElementById('btnVoltar');
+btnVoltar.addEventListener('click', function(){
+const confirmarCancelamento = confirm("Tem certeza de que deseja cancelar a atualizacaoo?");
+if (confirmarCancelamento) {
+    window.location.href = "readTurma.html";
+}
+});
 
     document.addEventListener("DOMContentLoaded", function(){
         

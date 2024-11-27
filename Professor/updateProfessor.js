@@ -1,8 +1,10 @@
 const btnVoltar = document.getElementById('btnVoltar');
 btnVoltar.addEventListener('click', function(){
-    window.location.href = "./readProfessor.html";
+    const confirmarCancelamento = confirm("Tem certeza de que deseja cancelar a atualizacao?");
+    if (confirmarCancelamento) {
+        window.location.href= 'readProfessor.html';
+    }
 });
-
 //EDIÇÃO
 document.addEventListener("DOMContentLoaded", function() { //apenas quando todo o conteúdo do site estiver carregado
         

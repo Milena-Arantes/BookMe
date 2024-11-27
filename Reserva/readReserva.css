@@ -21,7 +21,7 @@
   }
   
   h1 {
-    background-color: #ff7f00;
+    background-color: #2F8BE9;
     color: white;
     padding: 10px;
     border-radius: 4px;
@@ -47,7 +47,7 @@
   }
   
   .btnNavegacaoDia, .btnNavegacaoSala {
-    background-color: #ff7f00;
+    background-color: #2F8BE9;
     color: white;
     border: none;
     border-radius: 4px;
@@ -58,7 +58,7 @@
   }
   
   .btnNavegacaoDia:hover, .btnNavegacaoSala:hover {
-    background-color: #e06c00;
+    background-color: #2F8BE9;
   }
   
   .dataTextoAtivo, .labTextoAtivo, .salaTexto, .audiTexto {
@@ -77,7 +77,7 @@
   }
   
   thead {
-    background-color: #ff7f00;
+    background-color: #2F8BE9;
     color: white;
   }
   
@@ -106,7 +106,7 @@
   
   /* Botões */
   button.btnVoltar, button.btnPdf, button.btnCadReserva {
-    background-color: #ff7f00;
+    background-color: #2F8BE9;
     color: white;
     border: none;
     border-radius: 4px;
@@ -117,7 +117,7 @@
   }
   
   button.btnVoltar:hover, button.btnPdf:hover, button.btnCadReserva:hover {
-    background-color: #e06c00;
+    background-color: #2F8BE9;
   }
 
   

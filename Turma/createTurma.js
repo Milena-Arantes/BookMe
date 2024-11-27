@@ -362,9 +362,12 @@ window.onload = () => {
     document.getElementById('formCadTurma').addEventListener('submit', cadastrarTurma);
 
     // Botão voltar (apenas como exemplo, ajustar se necessário)
-    document.getElementById('btnVoltar').addEventListener('click', () => {
-        alert("Tem certeza de que deseja voltar? Seu progresso nao sera salvo")
+    const btnVoltar = document.getElementById('btnVoltar');
+    btnVoltar.addEventListener('click', function(){
+    const confirmarCancelamento = confirm("Tem certeza de que deseja cancelar seu cadastro?");
+    if (confirmarCancelamento) {
         window.location.href = "readTurma.html";
+    }
     });
 };
 

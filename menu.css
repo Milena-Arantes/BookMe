@@ -1,6 +1,4 @@
-body{
-background-color: var(--background);
-}
+
 
 h1{ /*titulo*/
     background-color: var(--orange);
@@ -74,14 +72,26 @@ body {
     padding: 10px;
 }
 
+.logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.logo img {
+    max-width: 600px; /* Define o tamanho máximo da logo */
+    max-height: 600px;
+}
 
 
 :root{
-    --orange: #E87400;
+    --orange: #2F8BE9;
     --background: #fcfaed;
-    --btnHover: #cc6b0a;
-    --yellow: #E8BD00;
-    --yellowHover: #ffd51b;
+    --btnHover: #175da3;
+    --yellow: #c50000;
+    --yellowHover: #9b0000;
     --grey: #ebe4c1;
     --navy: #3168AA;
     --navyHover: #438ae0;

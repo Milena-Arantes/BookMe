@@ -1,8 +1,10 @@
 const btnVoltar = document.getElementById('btnVoltar');
 btnVoltar.addEventListener('click', function(){
+const confirmarCancelamento = confirm("Tem certeza de que deseja cancelar seu cadastro?");
+if (confirmarCancelamento) {
     window.location.href = "readSala.html";
+}
 });
-
 
 document.addEventListener("DOMContentLoaded", function() { //apenas quando todo o conteúdo do site estiver carregado
     const formCadSala = document.getElementById('formCadSala');

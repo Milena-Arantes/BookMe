@@ -1,6 +1,9 @@
 const btnVoltar = document.getElementById('btnVoltar');
 btnVoltar.addEventListener('click', function(){
-    window.location.href = "./readDisciplina.html";
+const confirmarCancelamento = confirm("Tem certeza de que deseja cancelar seu cadastro?");
+if (confirmarCancelamento) {
+    window.location.href = "readDisciplina.html";
+}
 });
 
 

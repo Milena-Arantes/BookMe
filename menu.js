@@ -21,5 +21,8 @@ btnSecretaria.addEventListener('click', function(){
 //botao sair
 const btnSair = document.getElementById('btnSair');
 btnSair.addEventListener('click', function(){
-    window.location.href="index.html";
+    const confirmarCancelamento = confirm("Tem certeza de que deseja sair?");
+    if (confirmarCancelamento) {
+        window.location.href = "index.html";
+    }
 });

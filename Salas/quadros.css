@@ -6,10 +6,14 @@ body {
 
 
 :root{
-    --orange: #E87400;
-    --background: #FFFEF7;
-    --btnHover: #ff8409;
+    --orange: #2F8BE9;
+    --background: #f8f3eb;
+    --btnHover: #175da3;
     --greyHover: #e7e5e0;
+    --lightBlue: #31bbe6;
+    --lightBlueHover: #049dcc;
+    --red: #c50000;
+    --redHover: #9b0000;
 }
 
 body{

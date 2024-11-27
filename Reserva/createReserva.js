@@ -1,13 +1,8 @@
 const btnVoltar = document.getElementById('btnVoltar');
 btnVoltar.addEventListener('click', function(){
     const confirmarCancelamento = confirm("Tem certeza de que deseja cancelar sua reserva?");
-    
     if (confirmarCancelamento) {
-        // Se o usuário clicar em "OK"
         window.location.href = "readReserva.html";
-    } else {
-        // Se o usuário clicar em "Cancelar"
-        // Nenhuma ação é necessária, o usuário permanece na mesma página.
     }
 });
 
@@ -18,9 +13,6 @@ btnVoltarNao.addEventListener('click', function(){
     if (confirmarCancelamento) {
         // Se o usuário clicar em "OK"
         window.location.href = "readReserva.html";
-    } else {
-        // Se o usuário clicar em "Cancelar"
-        // Nenhuma ação é necessária, o usuário permanece na mesma página.
     }
 });
 

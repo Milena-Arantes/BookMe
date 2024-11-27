@@ -1,6 +1,9 @@
 const btnVoltar = document.getElementById('btnVoltar');
 btnVoltar.addEventListener('click', function(){
-    window.location.href = "./readCurso.html";
+    const confirmarCancelamento = confirm("Tem certeza de que deseja cancelar a atualizacao?");
+    if (confirmarCancelamento) {
+        window.location.href= 'readCurso.html';
+    }
 });
 
 //EDIÇÃO

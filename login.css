@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root{
-    --orange: #E87400;
+    --orange: #2F8BE9;
     --background: #f8f3eb;
-    --btnHover: #ff8409;
+    --btnHover: #175da3;
     --greyHover: #e7e5e0;
     --lightBlue: #31bbe6;
     --lightBlueHover: #049dcc;
@@ -72,7 +72,7 @@ input[type="password"] {
 }
 
 #btnEntrar {
-    background-color: #F57C00; /* Laranja */
+    background-color:var(--orange); 
     width: 100%;
     color: white;
     border: none;
@@ -83,7 +83,7 @@ input[type="password"] {
 }
 
 #btnEntrar:hover {
-    background-color: #E65100; /* Tom mais escuro no hover */
+    background-color: var(--btnHover);
 }
 
 

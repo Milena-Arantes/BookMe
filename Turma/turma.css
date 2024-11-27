@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root{
-    --orange: #b30f01;
+    --orange: #2F8BE9;
     --background: #f8f3eb;
-    --btnHover: #ff8409;
+    --btnHover: #175da3;
     --greyHover: #e7e5e0;
     --lightBlue: #31bbe6;
     --lightBlueHover: #049dcc;
@@ -65,6 +65,18 @@ input[type="text"] {
     border-radius: 4px; /* Opcional, arredonda os cantos */
 
 }
+
+select {
+    width: 700px;
+    height: 50px;
+    padding: 8px;
+    font-size: 1em;
+    background-color: white;
+    border: 2px solid rgba(0, 0, 0, 0.2); /* Cor preta com 30% de opacidade */
+    border-radius: 4px; /* Opcional, arredonda os cantos */
+
+}
+
 
 /*FIXAR POSIÇÃO DO BOTÃO VOLTAR*/
 .voltar {

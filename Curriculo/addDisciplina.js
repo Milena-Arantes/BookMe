@@ -72,8 +72,12 @@ document.addEventListener("DOMContentLoaded", function() { //apenas quando todo 
 
     const btnVoltar = document.getElementById('btnVoltar');
     btnVoltar.addEventListener('click', function(){
-    window.location.href= `../Curriculo/curriculo.html?id=${id}`;
+    const confirmarCancelamento = confirm("Tem certeza de que deseja cancelar seu cadastro?");
+    if (confirmarCancelamento) {
+        window.location.href= `../Curriculo/curriculo.html?id=${id}`;
+    }
     });
+
 
     const formAddDisciplina = document.getElementById('formAddDisciplina');
     formAddDisciplina.addEventListener("submit", function(event){ 
